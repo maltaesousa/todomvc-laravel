@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->action('TasksController@index');
 });
+
+Route::resource('/tasks', 'TasksController');
+
+Route::get('/tasks/{id}', 'TasksController@show')->name('tasks.show');
+Route::get('/tasks/create', 'TasksController@create')->name('tasks.create');
+
+/*
+Route::get('/tasks/{id}', function ($id) {
+    return view('test')->with('param', $id);
+});*/
